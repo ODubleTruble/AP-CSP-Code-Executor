@@ -1,11 +1,7 @@
 from functions_for_output import *
 import random
 
-print("Enter the first value")
-a = convertInput(input('input: '))
-print("Enter the second value")
-b = convertInput(input('input: '))
-if(a==b):
-    print("They're the same")
-else:
-    print("They're different")
+for _ in range(3):
+    print("Say this 3 times")
+    for __ in range(2):
+        print("Say this 2 times")

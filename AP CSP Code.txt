@@ -1,12 +1,8 @@
-DISPLAY("Enter the first value")
-a <-- INPUT()
-DISPLAY("Enter the second value")
-b <-- INPUT()
-IF(a=b)
+REPEAT 3 TIMES
 {
-    DISPLAY("They're the same")
-}
-ELSE
-{
-    DISPLAY("They're different")
+    DISPLAY("Say this 3 times")
+    REPEAT 2 TIMES
+    {
+        DISPLAY("Say this 2 times")
+    }
 }

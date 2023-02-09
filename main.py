@@ -1,5 +1,7 @@
 import os 
 
+counter_variable = ''
+
 # Removes the \n at the end of each line.
 # All lines except the last line have a \n.
 def removeNewLineIndicators(all_lines):
@@ -25,6 +27,13 @@ def copyOutputToPythonFile(file_location: str, pythonCode: str):
 
 
 def lineToPython(line):
+    global counter_variable
+    
+    indents = 0
+    while line[:4] == '    ':
+        indents += 1
+        line = line[4:]
+    
     # Arithmetic Operators and Numeric Procedures
     line = line.replace('MOD', '%')
     line = line.replace('RANDOM', 'random.randint')
@@ -51,8 +60,13 @@ def lineToPython(line):
     if line[:4] == 'ELSE':
         line = 'else:'
     
+    # Iteration
+    if line[:6] == 'REPEAT' and line[-5:] == 'TIMES':
+        loopNum = int(line[7:-6])
+        counter_variable += '_'
+        line = f'for {counter_variable} in range({loopNum}):'
     
-    return line
+    return ('    ' * indents) + line
 
 
 if __name__ == "__main__":
