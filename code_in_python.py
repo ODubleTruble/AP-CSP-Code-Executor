@@ -5,4 +5,7 @@ print("Enter the first value")
 a = convertInput(input('input: '))
 print("Enter the second value")
 b = convertInput(input('input: '))
-print(a+b)
+if(a==b):
+    print("They're the same")
+else:
+    print("They're different")

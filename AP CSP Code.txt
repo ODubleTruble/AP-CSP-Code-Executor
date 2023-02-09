@@ -2,4 +2,11 @@ DISPLAY("Enter the first value")
 a <-- INPUT()
 DISPLAY("Enter the second value")
 b <-- INPUT()
-DISPLAY(a+b)
+IF(a=b)
+{
+    DISPLAY("They're the same")
+}
+ELSE
+{
+    DISPLAY("They're different")
+}

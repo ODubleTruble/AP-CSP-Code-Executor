@@ -48,7 +48,8 @@ def lineToPython(line):
     if line[:2] == 'IF':
         line = 'if' + line[2:]
         line += ':'
-    
+    if line[:4] == 'ELSE':
+        line = 'else:'
     
     
     return line
