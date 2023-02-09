@@ -1,2 +1,2 @@
-a ← 5
-DISPLAY (a)
+a <-- RANDOM(INPUT() MOD 2, 3)
+DISPLAY(a)
