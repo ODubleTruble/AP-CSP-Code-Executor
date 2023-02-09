@@ -25,12 +25,32 @@ def copyOutputToPythonFile(file_location: str, pythonCode: str):
 
 
 def lineToPython(line):
-    line = line.replace('<--', '=')
-    line = line.replace('DISPLAY', 'print')
-    line = line.replace('INPUT()', "float(input('input: '))")
+    # Arithmetic Operators and Numeric Procedures
     line = line.replace('MOD', '%')
     line = line.replace('RANDOM', 'random.randint')
-
+    
+    # Relational and Boolean Operators
+    line = line.replace('true', 'True')
+    line = line.replace('false', 'False')
+    line = line.replace('=', '==')
+    line = line.replace('NOT', 'not')
+    line = line.replace('AND', 'and')
+    line = line.replace('OR', 'or')
+    
+    # Assignment, Display, and Input
+    line = line.replace('<--', '=')
+    line = line.replace('DISPLAY', 'print')
+    line = line.replace('INPUT()', "convertInput(input('input: '))")
+    
+    # Selection
+    if line[0] == '{' or line[0] == '}':
+        return ''
+    if line[:2] == 'IF':
+        line = 'if' + line[2:]
+        line += ':'
+    
+    
+    
     return line
 
 
@@ -42,15 +62,17 @@ if __name__ == "__main__":
     lines = code_file.readlines()
     lines = removeNewLineIndicators(lines)
     
-    python_code = ['import random', '']
+    python_code = ['from functions_for_output import *', 'import random', '']
     for line in lines:
-        python_code.append(lineToPython(line))
+        python_line = lineToPython(line)
+        if python_line != '':
+            python_code.append(python_line)
     python_code = '\n'.join(python_code)
     
     printAllCSPLines(lines)
     print('\n-----ALL LINES OF EQUIVALENT PYTHON CODE-----\n\n' + python_code + '\n\n')
     
-    copyOutputToPythonFile(dir_path+'\output.py', python_code)
+    copyOutputToPythonFile(dir_path+'\code_in_python.py', python_code)
     
     code_file.close()
 

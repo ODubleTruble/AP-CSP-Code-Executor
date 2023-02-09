@@ -1,2 +1,5 @@
-a <-- RANDOM(INPUT() MOD 2, 3)
-DISPLAY(a)
+DISPLAY("Enter the first value")
+a <-- INPUT()
+DISPLAY("Enter the second value")
+b <-- INPUT()
+DISPLAY(a+b)
