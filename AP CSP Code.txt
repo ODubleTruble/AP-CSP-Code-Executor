@@ -1,8 +1,6 @@
-REPEAT 3 TIMES
+a <-- 0
+REPEAT UNTIL a=3
 {
-    DISPLAY("Say this 3 times")
-    REPEAT 2 TIMES
-    {
-        DISPLAY("Say this 2 times")
-    }
+    DISPLAY(a)
+    a <-- a + 1
 }

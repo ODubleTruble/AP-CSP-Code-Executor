@@ -65,6 +65,9 @@ def lineToPython(line):
         loopNum = int(line[7:-6])
         counter_variable += '_'
         line = f'for {counter_variable} in range({loopNum}):'
+    if line[:12] == 'REPEAT UNTIL':
+        condition = line[13:]
+        line = f'while not ({condition}):'
     
     return ('    ' * indents) + line
 
